@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: deploy file to server
+      - name: deploy file
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: ${{ secrets.SSH_USER }}
