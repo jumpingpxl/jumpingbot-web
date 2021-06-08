@@ -15,7 +15,7 @@ jobs:
       - name: Pull from ssh
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: cd VERZEICHNIS && git pull
+          command: cd /var/www/jumpingbot && git pull
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SSH_USER }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
