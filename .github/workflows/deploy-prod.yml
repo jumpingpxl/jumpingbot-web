@@ -8,17 +8,31 @@ jobs:
     runs-on: ubuntu-latest
     name: Continous Deployment
     steps:
-      # To use this repository's private action, you must check out the repository
+    
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: deploy file
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        
+      - name: Pull from ssh
+        uses: garygrossgarten/github-action-ssh@release
         with:
+          command: cd VERZEICHNIS && git pull
+          host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SSH_USER }}
-          server: ${{ secrets.SERVER_IP }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          local_path: '.'
-          remote_path: '/var/www/jumpingbot'
-          args: '-o ConnectTimeout=5'
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Updating npm
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd /var/www/jumpingbot && npm install
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USER }}
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: restart pm2
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd /var/www/jumpingbot && pm2 restart ecosystem.config.js
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USER }}
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
 
