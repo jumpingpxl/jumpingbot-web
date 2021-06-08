@@ -4,7 +4,7 @@ body, html {
     width: 100%;
     font: var(--font-primary);
     color: var(--foreground-95);
-    background: rgb(var(--background-0));
+   background: rgb(var(--background-0));
 }
 
 .content {

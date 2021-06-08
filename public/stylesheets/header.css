@@ -1,7 +1,6 @@
 .navbar {
     position: sticky;
     overflow: hidden;
-    background-color: #292929;
     align-items: center;
     min-height: 80px;
 }
