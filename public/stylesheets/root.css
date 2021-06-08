@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+:root{
+    /* Colors */
+        /* Background Colors */
+        --background-0: 12, 13, 18;
+        --background-10: 28, 29, 34;
+        --background-20: 44, 45, 50;
+        --background-30: 60, 61, 66;
+        --background-40: 76, 77, 82;
+
+        /* Foreground Colors */
+        --foreground-100: #fff;
+        --foreground-95: #f5f5f5;
+        --foreground-90: #ddd;
+        --foreground-80: #bbb;
+        --foreground-70: #999;
+        --foreground-60: #777;
+        --foreground-50: #686868;
+        
+        /* Accent Colors */
+        --accent-primary-100: #BBDEFB;
+        --accent-primary-200: #90CAF9;
+        --accent-primary-300: #64B5F6;
+        --accent-primary-400: #42A5F5;
+        --accent-primary-500: #2196F3;
+        --accent-primary-600: #1E88E5;
+        --accent-primary-700: #1976D2;
+        --accent-primary-800: #1565C0;
+        --accent-primary-900: #0D47A1;
+        
+        /* Status Colors */
+            /* Blue */
+            --info-primary: #4444f1;
+            --info-light: #7878f0;
+            --info-dark: #2b2ba1;
+
+            /* Red */
+            --error-primary: 245, 66, 69;
+            --error-light: 241, 127, 129;
+            --error-dark: 165, 47, 49;
+            --error-background: 187, 64, 66;
+
+            /* Green */
+            --success-primary: 51, 226, 107;
+            --success-light: 150, 224, 173;
+            --success-dark: 20, 102, 46;
+            --success-background: 53, 192, 97;
+
+            /* Yellow */
+            --warning-primary: #FEE75C;
+            --warning-light: #fdf1a9;
+            --warning-dark: #998827;
+
+    /* Fonts */
+        /* Font Families */
+        --font-text: "Work Sans", "Loma", "Calibri", "Arial", sans-serif;
+        --font-headers: "Rubik", "Segoe UI", "Calibri", "Arial", sans-serif;
+
+        /* Font Sizes */
+        --font-size-tiny: 10px;
+        --font-size-small: 13px;
+        --font-size-normal: 15px;
+        --font-size-big: 18px;
+        --font-size-huge: 24px;
+        --font-size-mega: 36px;
+        --font-size-heading: 50px;
+
+        /* Font Faces */
+            /* Text Faces */
+            --font-small: 400 var(--font-size-small) var(--font-text);
+            --font-primary: 400 var(--font-size-normal) var(--font-text);
+            --font-big: 400 var(--font-size-big) var(--font-text);
+            --font-huge: 500 var(--font-size-huge) var(--font-text);
+
+            /* Heading Faces */
+            --font-heading-1: 600 var(--font-size-heading) var(--font-headers);
+            --font-heading-2: 600 var(--font-size-mega) var(--font-headers);
+            --font-heading-3: 500 var(--font-size-huge) var(--font-headers);
+            --font-heading-4: 400 var(--font-size-big) var(--font-headers);
+
+    /* Border radiuses */
+    --border-roundest: 20px;
+    --border-outer: 12px;
+    --border-inner: 7px;
+    --border-tightest: 3px;
+
+}

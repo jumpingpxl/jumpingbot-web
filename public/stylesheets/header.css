@@ -1,0 +1,24 @@
+.navbar {
+    position: sticky;
+    overflow: hidden;
+    background-color: #292929;
+    align-items: center;
+    min-height: 80px;
+}
+
+.navbar a {
+    color: #f2f2f2;
+    text-align: center;
+    align-items: center;
+    padding: 30px 15px;
+    text-decoration: none;
+    font-size: .875rem;
+}
+
+.navbar .left {
+    float: left;
+}
+
+.navbar .right {
+    float: right;
+}

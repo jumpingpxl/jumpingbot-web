@@ -1,0 +1,19 @@
+<link rel = 'stylesheet' href = '/stylesheets/header.css'/>
+<div class = "navbar">
+    <a href = "/" class = "left" style = "padding: 12px 0;">
+        <img alt = "nico.beer - Logo" src = "/images/logo.png"
+             style = "border-radius: 25px; height: 3em; margin: 5px 15px; -moz-user-select: none" draggable = "false"
+             ondragstart = "if (!window.__cfRLUnblockHandlers) return false; return false;">
+    </a>
+    <a href = "/" class = "left">HOME</a>
+    <a href = "/faq" class = "left">FAQ</a>
+
+    <a class = "right"></a>
+    <% const authToken = req.cookies['discordAuthToken'];
+    if (authToken) { %>
+        <a href = "/dashboard" class = "right">DASHBOARD</a>
+        <a href = "/logout" class = "right">LOGOUT</a>
+    <% } else { %>
+        <a href = "/login?directLogin=true" class = "right">LOGIN</a>
+    <% } %>
+</div>
