@@ -195,8 +195,4 @@ module.exports = new Client({
   clientID: config.discord.clientId,
   scopes: config.discord.scopes,
   redirectURI: config.discord.redirectUri,
-  /*  clientSecret: "pb38cEjzAUa5LMVtzl1NVoZBdYv8Kt3Z",
-  clientID: "839890553168461864",
-  scopes: ["identify", "guilds"],
-  redirectURI: "http://localhost:3000/login/success" */
 });
