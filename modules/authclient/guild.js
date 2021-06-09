@@ -17,8 +17,6 @@ module.exports = class Guild {
    * @returns {String}
    */
 
-  isOnServer = false;
-
   constructor(options, isOnServer) {
     this.id = options.id;
     this.name = options.name;
