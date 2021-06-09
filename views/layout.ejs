@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title><%= title %> - JumpingBot</title>
-        <link rel = 'stylesheet' href = '/stylesheets/root.css'/>
-        <link rel = 'stylesheet' href = '/stylesheets/style.css'/>
-        <link rel = 'stylesheet' id = 'css-theme'/>
-        <meta name = "viewport" content = "width=device-width, initial-scale=1">
-        <link rel="icon" href="/images/logo.png" type="image/x-icon"/>
-    </head>
-    <body>
-        <div class = "main-body">
-            <%- include('partials/header'); %>
-            <div class="content">
-                <%- include(body); %>
-            </div>
-           <!-- <%- include('partials/footer'); %> -->
-        </div>
-    </body>
+  <head>
+    <title><%= title %> - JumpingBot</title>
+    <link rel="stylesheet" href="/stylesheets/root.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" id="css-theme" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+  </head>
+
+  <body>
+    <div class="main-body">
+      <%- include('partials/header'); %>
+      <div class="content"><%- include(body); %></div>
+      <!-- <%- include('partials/footer'); %> -->
+    </div>
+  </body>
 </html>

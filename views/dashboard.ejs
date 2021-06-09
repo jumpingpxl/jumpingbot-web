@@ -1,46 +1,64 @@
-<link rel = 'stylesheet' href = '/stylesheets/auth.css'/>
+<link rel="stylesheet" href="/stylesheets/auth.css" />
+<script src="/javascripts/jquery.js"></script>
 
 <h1>Select a Server to Manage JumpingBot</h1>
-<p id = "loading">loading...</p>
-<div id = "guilds" class = "guilds">
-
-</div>
+<p id="loading">loading...</p>
+<div id="guilds" class="guilds"></div>
 
 <script>
-  window.fetch('/dashboard/load/guilds', {
-    method: "POST"
-  }).then(response => {
-    response.json().then(body => {
+  $(document).ready(function () {
+    $.ajax({
+      url: "/dashboard/load/guilds",
+      method: "POST",
+    }).done((body) => {
+      const loadingDoc = $("#loading");
+      const guildsDoc = $("#guilds");
+
+      const errors = [];
       if (body.error) {
-        document.getElementById("loading").textContent = body.error;
-        document.getElementById("guilds").remove();
-      } else {
-        document.getElementById("loading").remove();
-        body.guilds.forEach(guild => {
-          const guildDiv = document.createElement("div");
-          guildDiv.className = 'guild';
-          const guildIcon = document.createElement("img");
-          guildIcon.className = "icon"
-          if (guild.icon === null) {
-            guildIcon.src = "https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png";
-          } else {
-            guildIcon.src = "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + "." + (guild.icon.startsWith('a_') ? "gif" : "png") + "?size128";
-          }
-
-          const guildName = document.createElement("span");
-          guildName.className = 'name'
-          guildName.appendChild(document.createTextNode(guild.name));
-
-          const guildButton = document.createElement("button");
-          guildButton.className = 'greenButton';
-          guildButton.appendChild(document.createTextNode('Set up JumpingBot'));
-
-          guildDiv.appendChild(guildIcon);
-          guildDiv.appendChild(guildName);
-          guildDiv.appendChild(guildButton);
-          document.getElementById("guilds").appendChild(guildDiv);
-        })
+        errors.push(body.error);
+      } else if (body.guilds.length === 0) {
+        errors.push("No Guild with User Permission MANAGE_SERVER Found!");
       }
-    })
-  })
+
+      if (errors.length !== 0) {
+        errors.forEach((error) => {
+          $("<p/>")
+            .addClass("flash-error")
+            .text(error)
+            .insertBefore(loadingDoc);
+        });
+
+        loadingDoc.remove();
+        guildsDoc.remove();
+      } else {
+        loadingDoc.remove();
+        const defaultIcon =
+          "https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png";
+        body.guilds.forEach((guild) => {
+          const guildImage = $("<img/>")
+            .addClass("icon")
+            .attr(
+              "src",
+              guild.icon === null
+                ? defaultIcon
+                : "https://cdn.discordapp.com/icons/" +
+                    guild.id +
+                    "/" +
+                    guild.icon +
+                    "." +
+                    (guild.icon.startsWith("a_") ? "gif" : "png") +
+                    "?size128"
+            );
+          const guildName = $("<span/>").addClass("name").text(guild.name);
+          const guildButton = $("<button/>")
+          $("<div/>")
+            .addClass("guild")
+            .append(guildImage)
+            .append(guildName)
+            .appendTo(guildsDoc);
+        });
+      }
+    });
+  });
 </script>

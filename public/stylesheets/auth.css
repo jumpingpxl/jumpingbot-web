@@ -1,69 +1,69 @@
 .guilds {
-    display: flex;
-    flex: 1 1 0%;
-    flex-direction: column;
-    padding: 0px 0.5em;
-    align-self: stretch;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  padding: 0px 0.5em;
+  align-self: stretch;
 }
 
 .guild {
-    display: flex;
-    flex: 1 1 0%;
-    height: 60px;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    padding: 1em;
-    border-radius: 5px;
-    cursor: pointer;
+  display: flex;
+  flex: 1 1 0%;
+  height: 60px;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 1em;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .guild .icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 25px;
-    flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  flex-shrink: 0;
 
-    margin-inline-start: 20px;
-    margin-bottom: 20px;
+  margin-inline-start: 20px;
+  margin-bottom: 20px;
 }
 
 .guild .name {
-    font-weight: bold;
-    font-size: 14px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    flex: 1 0 1em;
+  font-weight: bold;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1 0 1em;
 
-    margin-inline-start: 20px;
-    margin-bottom: 20px;
+  margin-inline-start: 20px;
+  margin-bottom: 20px;
 }
 
 .guild .greenButton {
-    min-width: 125px;
-    max-width: 300px;
-    flex-shrink: 0;
+  min-width: 125px;
+  max-width: 300px;
+  flex-shrink: 0;
 
-    white-space: nowrap;
-    user-select: none;
-    line-height: 1;
-    font-weight: 400;
-    display: flex;
-    border-radius: 3px;
-    font-size: 13px;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    padding: 10px 25px;
-    transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
-    color: rgb(255, 255, 255);
-    background: rgb(68, 179, 127);
-    border: none;
-    cursor: pointer;
-    min-height: 32px;
-    min-width: 60px;
-    width: unset;
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1;
+  font-weight: 400;
+  display: flex;
+  border-radius: 3px;
+  font-size: 13px;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 10px 25px;
+  transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
+  color: rgb(255, 255, 255);
+  background: rgb(68, 179, 127);
+  border: none;
+  cursor: pointer;
+  min-height: 32px;
+  min-width: 60px;
+  width: unset;
 }

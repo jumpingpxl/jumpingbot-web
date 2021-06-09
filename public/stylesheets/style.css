@@ -1,27 +1,28 @@
-body, html {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    font: var(--font-primary);
-    color: var(--foreground-95);
-   background: rgb(var(--background-0));
+body,
+html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font: var(--font-primary);
+  color: var(--foreground-95);
+  background: rgb(var(--background-0));
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    -webkit-box-align: center;
-    align-items: center;
-    max-width: 800px;
-    padding: 20px 0;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  max-width: 800px;
+  padding: 20px 0;
+  margin: auto;
 }
 
 .flash-error {
-    background-color: rgba(168, 19, 33, 0.5);
-    border: red solid 1px;
-    border-radius: 5px;
-    padding: 10px 15px;
-    display: inline-block;
-    margin-bottom: 30px;
+  background-color: rgba(168, 19, 33, 0.5);
+  border: red solid 1px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  display: inline-block;
+  margin-bottom: 30px;
 }

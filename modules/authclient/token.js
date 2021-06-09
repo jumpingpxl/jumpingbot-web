@@ -11,7 +11,7 @@ module.exports = class Token {
     this.accessToken = options.access_token;
     this.expiresIn = options.expires_in;
     this.refreshToken = options.refresh_token;
-    this.scopes = options.scope.split(' ');
+    this.scopes = options.scope.split(" ");
     this.tokenType = options.token_type;
   }
-}
+};

@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const config = require('../config.json');
+const config = require("../config.json");
 
 const API = "https://discord.com/api/v8";
 const Token = require("./authclient/token.js");
@@ -23,7 +23,11 @@ class Client {
   }
 
   getInvite() {
-    return `https://discord.com/oauth2/authorize?client_id=${this._clientID}&response_type=code&redirect_uri=${this.redirectURI}&scope=${this.scopes.join(" ")}`
+    return `https://discord.com/oauth2/authorize?client_id=${
+      this._clientID
+    }&response_type=code&redirect_uri=${
+      this.redirectURI
+    }&scope=${this.scopes.join(" ")}`;
   }
 
   /**
@@ -161,20 +165,23 @@ class Client {
         body: new URLSearchParams({
           client_id: this._clientID,
           client_secret: this._clientSecret,
-          token: token
+          token: token,
         }),
       })
         .then(async (response) => {
           let body = await response.json();
           if (response.status < 200 || response.status > 299)
             reject(new Error(body.error));
-          else resolve(new Token({
-            access_token: null,
-            refresh_token: null,
-            expires_in: null,
-            scope: this.scopes.join(" "),
-            token_type: 'Bearer'
-          }));
+          else
+            resolve(
+              new Token({
+                access_token: null,
+                refresh_token: null,
+                expires_in: null,
+                scope: this.scopes.join(" "),
+                token_type: "Bearer",
+              })
+            );
         })
         .catch((error) => {
           reject(error);
@@ -187,9 +194,9 @@ module.exports = new Client({
   clientSecret: config.discord.clientSecret,
   clientID: config.discord.clientId,
   scopes: config.discord.scopes,
-  redirectURI: config.discord.redirectUri
-/*  clientSecret: "pb38cEjzAUa5LMVtzl1NVoZBdYv8Kt3Z",
+  redirectURI: config.discord.redirectUri,
+  /*  clientSecret: "pb38cEjzAUa5LMVtzl1NVoZBdYv8Kt3Z",
   clientID: "839890553168461864",
   scopes: ["identify", "guilds"],
   redirectURI: "http://localhost:3000/login/success" */
-})
+});
