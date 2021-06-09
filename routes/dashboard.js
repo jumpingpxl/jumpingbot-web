@@ -22,6 +22,7 @@ router.get("/", function (req, res, next) {
       body: "dashboard",
       title: "Dashboard",
       guilds: guilds,
+      redis: redis
     });
   }
 });
@@ -37,7 +38,7 @@ router.get("/guild/:guildId", (req, res) => {
   res.json({ guildID: guildId });
 });
 
-router.post("/load/guilds", (req, res) => {
+router.post("/load/guilds", async (req, res) => {
   const guildCache = req.cookies["discordGuilds"];
   if (guildCache) {
     res.json({ guilds: guildCache });
@@ -51,21 +52,17 @@ router.post("/load/guilds", (req, res) => {
     .catch((err) => {
       error = err;
     })
-    .then((response) => {
-    let guilds = [];
-    if (!error) {
-      try {
-        response.forEach(guild => {
+    .then(async (response) => {
+      let guilds = [];
+      if (!error) {
+        response.forEach(async (guild) => {
           let perm = guild.permissions;
           perm = perm | 0x20;
           if (perm === -1) {
             guilds.push(guild);
           }
         });
-      } catch (err) {
-        error = err;
       }
-    }
 
       if (error) {
         res.json({ error: error.toString() });
@@ -78,6 +75,30 @@ router.post("/load/guilds", (req, res) => {
         res.json({ guilds: guilds });
       }
     });
+});
+
+router.post("/load/guild/:guildId", async (req, res) => {
+  const guildId = req.params.guildId;
+  const guildCache = req.cookies["discordGuilds"];
+  if (!guildCache) {
+    res.json({ error: "Guild Information could not be loaded." });
+    return;
+  }
+
+  let isInCache = false;
+  guildCache.forEach((guild) => {
+    if (guild.id === guildId) {
+      isInCache = true;
+    }
+  });
+
+  if (!isInCache) {
+    res.json({ error: "Guild Information could not be loaded." });
+    return;
+  }
+
+  const redisAnswer = await redis.getGuild(guildId);
+  res.json(redisAnswer);
 });
 
 module.exports = router;

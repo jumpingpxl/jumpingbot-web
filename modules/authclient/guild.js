@@ -17,6 +17,8 @@ module.exports = class Guild {
    * @returns {String}
    */
 
+  isOnServer = false;
+
   constructor(options, isOnServer) {
     this.id = options.id;
     this.name = options.name;
@@ -34,13 +36,5 @@ module.exports = class Guild {
     if (options.dynamic)
       options.format = this.icon.startsWith("a_") ? "gif" : options.format;
     return `https://cdn.discordapp.com/icons/${this.id}/${this.icon}.${options.format}?size=${options.size}`;
-  }
-
-  setIsOnServer(value) {
-    this.isOnServer = value;
-  }
-
-  getIsOnServer(value) {
-    return this.isOnServer;
   }
 };

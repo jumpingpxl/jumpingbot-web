@@ -6,6 +6,9 @@ const Token = require("./authclient/token.js");
 const User = require("./authclient/user.js");
 const Guild = require("./authclient/guild.js");
 
+const redis = require("../modules/redisclient.js");
+const GUILD_IDENTIFIER = "Guild:";
+
 class Client {
   /**
    * Create Oauth2 client
@@ -20,7 +23,7 @@ class Client {
     this._clientSecret = options.clientSecret;
     this.scopes = options.scopes;
     this.redirectURI = options.redirectURI;
-  }
+  }  
 
   getInvite() {
     return `https://discord.com/oauth2/authorize?client_id=${
@@ -109,6 +112,7 @@ class Client {
           body.forEach((guild) => {
             guilds.push(new Guild(guild));
           });
+
           resolve(guilds);
         })
         .catch((error) => {

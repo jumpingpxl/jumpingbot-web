@@ -50,13 +50,24 @@
                     (guild.icon.startsWith("a_") ? "gif" : "png") +
                     "?size128"
             );
-          const guildName = $("<span/>").addClass("name").text(guild.name);
-          const guildButton = $("<button/>")
-          $("<div/>")
+          const guildName = $("<span/>")
+            .addClass("name")
+            .text(guild.name + " " + guild.redisValue);
+          const guildDiv = $("<div/>")
             .addClass("guild")
             .append(guildImage)
             .append(guildName)
             .appendTo(guildsDoc);
+
+          $.ajax({
+            url: "/dashboard/load/guild/" + guild.id,
+            method: "POST",
+          }).done((guildInfo) => {
+            $("<button/>")
+              .add("greenButton")
+              .text(guildInfo === null ? "Set up JumpingBot" : "Open Dashboard")
+              .appendTo(guildDiv);
+          });
         });
       }
     });
