@@ -74,6 +74,7 @@ router.post("/load/guilds", async (req, res) => {
           perm = perm | 0x20;
           if (perm === -1) {
             guilds.push(guild);
+            console.log(guild);
           }
         });
       }
@@ -96,6 +97,7 @@ router.post("/load/guilds", async (req, res) => {
           maxAge: 1000 * 30,
         });
 
+        console.log('finished')
         res.json({ guilds: guilds });
       }
     });
