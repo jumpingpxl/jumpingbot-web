@@ -24,9 +24,7 @@
   height: 40px;
   border-radius: 25px;
   flex-shrink: 0;
-
-  margin-inline-start: 20px;
-  margin-bottom: 20px;
+  
 }
 
 .guild .name {
@@ -37,11 +35,10 @@
   overflow: hidden;
   flex: 1 0 1em;
 
-  margin-inline-start: 20px;
-  margin-bottom: 20px;
+  margin-left: 20px;
 }
 
-.guild .greenButton {
+.guild .button {
   min-width: 125px;
   max-width: 300px;
   flex-shrink: 0;
@@ -60,10 +57,17 @@
   padding: 10px 25px;
   transition: border 180ms ease-out 0s, background 180ms ease-out 0s;
   color: rgb(255, 255, 255);
-  background: rgb(68, 179, 127);
   border: none;
   cursor: pointer;
   min-height: 32px;
   min-width: 60px;
   width: unset;
+}
+
+.green {
+  background: rgb(68, 179, 127);
+}
+
+.gray {
+  background: gray;
 }

@@ -4,6 +4,8 @@ const router = express.Router();
 const client = require("../modules/authclient.js");
 const redis = require("../modules/redisclient.js");
 
+const config = require("../config.json");
+
 router.get("/", function (req, res, next) {
   const authToken = req.cookies["discordAuthToken"];
   if (!authToken) {
@@ -22,7 +24,7 @@ router.get("/", function (req, res, next) {
       body: "dashboard",
       title: "Dashboard",
       guilds: guilds,
-      redis: redis
+      config: config,
     });
   }
 });
@@ -36,6 +38,17 @@ router.get("/guild/:guildId", (req, res) => {
 
   console.log(guildId);
   res.json({ guildID: guildId });
+});
+
+router.get("/link", (req, res) => {
+  console.log(req);
+  const guildId = req.query.guild_id;
+  if (!guildId) {
+    res.redirect("/dashboard");
+    return;
+  }
+
+  res.redirect("/dashboard/guild/" + guildId);
 });
 
 router.post("/load/guilds", async (req, res) => {
@@ -55,6 +68,7 @@ router.post("/load/guilds", async (req, res) => {
     .then(async (response) => {
       let guilds = [];
       if (!error) {
+        console.log("test " + response[1].toString());
         response.forEach(async (guild) => {
           let perm = guild.permissions;
           perm = perm | 0x20;
@@ -67,6 +81,16 @@ router.post("/load/guilds", async (req, res) => {
       if (error) {
         res.json({ error: error.toString() });
       } else {
+        guilds.sort(function (a, b) {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+
         res.cookie("discordGuilds", guilds, {
           httpOnly: true,
           maxAge: 1000 * 30,
