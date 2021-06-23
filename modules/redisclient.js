@@ -8,7 +8,7 @@ redis.on("error", function (error) {
   console.log(error);
 });
 
-const GUILD_IDENTIFIER = "Guild";
+const GUILD_IDENTIFIER = "Guild:";
 
 class Client {
   getRedis() {
@@ -24,7 +24,7 @@ class Client {
   getGuild(guildId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        redis.get("Guild:" + guildId, (err, value) => {
+        redis.get(GUILD_IDENTIFIER + guildId, (err, value) => {
           if (err) {
             reject(err);
           } else {
