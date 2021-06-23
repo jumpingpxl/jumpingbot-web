@@ -65,11 +65,11 @@ router.post("/load/guilds", async (req, res) => {
     .catch((err) => {
       error = err;
     })
-    .then(async (response) => {
+    .then((response) => {
       let guilds = [];
       if (!error) {
         console.log("test " + response[1].toString());
-        response.forEach(async (guild) => {
+        response.forEach((guild) => {
           let perm = guild.permissions;
           perm = perm | 0x20;
           if (perm === -1) {
