@@ -97,7 +97,7 @@ router.post("/load/guilds", async (req, res) => {
           maxAge: 1000 * 30,
         });
 
-        console.log('finished')
+        console.log('finished ' + guilds);
         res.json({ guilds: guilds });
       }
     });
