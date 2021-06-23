@@ -5,6 +5,7 @@ const client = require("../modules/authclient.js");
 const redis = require("../modules/redisclient.js");
 
 const config = require("../config.json");
+const { json } = require("express");
 
 router.get("/", function (req, res, next) {
   const authToken = req.cookies["discordAuthToken"];
@@ -74,7 +75,6 @@ router.post("/load/guilds", async (req, res) => {
           perm = perm | 0x20;
           if (perm === -1) {
             guilds.push(guild);
-            console.log(guild);
           }
         });
       }
@@ -97,8 +97,7 @@ router.post("/load/guilds", async (req, res) => {
           maxAge: 1000 * 30,
         });
 
-        console.log('finished ' + guilds);
-        res.json({ guilds: guilds });
+        res.json({ guilds: req.cookies["discordGuilds"] });
       }
     });
 });

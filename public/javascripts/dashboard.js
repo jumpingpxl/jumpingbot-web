@@ -26,6 +26,7 @@ $(document).ready(function () {
       const defaultIcon =
         "https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png";
       body.guilds.forEach((guild) => {
+        console.log(guild);
         const guildImage = $("<img/>")
           .addClass("icon")
           .attr(
@@ -37,7 +38,7 @@ $(document).ready(function () {
                   "/" +
                   guild.icon +
                   "." +
-                  (guild.icon.startsWith("a_") ? "gif" : "png") +
+                  ("png") +
                   "?size128"
           );
         const guildName = $("<span/>").addClass("name").text(guild.name);
